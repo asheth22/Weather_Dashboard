@@ -1,0 +1,25 @@
+.header {    
+    background-color: #39393b;
+    border-color:#39393b;       
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    
+  }
+  h2 {
+    display: flex;
+    justify-content: center;  
+    color: white;
+    font-weight: bolder;
+  }
+ .container {
+   margin-left: 0px;
+ }
+.col-md-3 {
+  justify-content: left;
+  float: left;
+ 
+}
+
+  
