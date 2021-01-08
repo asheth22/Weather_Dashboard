@@ -33,13 +33,28 @@ function updatePage(WeatherData) {
     console.log("Wind Speed: ", speed);
 
     var uvi = WeatherData.current.uvi;
-    console.log("UV Indes: ", uvi);
+    var uvColor;
+    if (uvi < 3) {
+        uvColor = "green";
+    }
+    else if (uvi > 7) {
+        uvColor = "red";
+    }
+    else {
+        uvColor = "yellow";
+    }
+    console.log("UV Indes: ", uvi, uvColor);
 
     for (i = 1; i < 6; i++) {
 
-        var newDate = addDays(today, i);
+        var now = dayjs();
+        
+        var d1 = now.add(i, 'day');
+        var newDate = d1.format('MM/DD/YYYY');
+        
+        console.log("-------------------------------------------------------");
 
-        console.log("Date: ", newDate);
+        console.log("New Date: ", newDate);
         temperature = (WeatherData.daily[i].temp.day - 273.15) * 1.80 + 32;
         temperature = temperature.toFixed(2) + '\xB0F';
         console.log("Temperature: ", temperature);
@@ -47,19 +62,16 @@ function updatePage(WeatherData) {
         humidity = WeatherData.daily[i].humidity + '%';
         console.log("Humidity: ", humidity);
         console.log("Clouds: ", WeatherData.daily[i].weather[0].description);
+        var iconCode = WeatherData.daily[i].weather[0].icon;
+        console.log("icon: ", iconCode);
+        var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        console.log("iconURL: ",  iconurl);
     }
 }
-function addDays(date, days) {
-    var result = new Date(date);
 
-    result.setDate(result.getDate() + days);
-    console.log("Result Date: ", result);
-    return result;
-}
 function clear() {
     $("#current-weathe").empty();
 }
-
 
 $("#run-search").on("click", function (event) {
 
