@@ -21,5 +21,8 @@
   float: left;
  
 }
+li {
+  list-style-type: none;
+}
 
   

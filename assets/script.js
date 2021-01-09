@@ -21,7 +21,6 @@ function updatePage(WeatherData) {
     console.log("Inside updatePage function");
     console.log(WeatherData);
 
-
     var temperature = (WeatherData.current.temp - 273.15) * 1.80 + 32;
     temperature = temperature.toFixed(2) + '\xB0F';
     console.log("Temperature: ", temperature);
@@ -90,6 +89,14 @@ $("#run-search").on("click", function (event) {
 
         var city = WeatherData.name;
         console.log("City: ", city, "(", today,);
+        
+        var $currentList = $("<ul>");
+        $currentList.addClass("list-group");  
+        $("#current-weather").append($currentList);
+        var $currentListItem = $("<li>");
+        $(".list-group").append($currentListItem);
+        $currentListItem.append("<h4>" + city + " (" + today + ") " + "</h4>"); 
+
         var lon = WeatherData.coord.lon;
         console.log("longitude: ", lon);
 
@@ -115,4 +122,4 @@ $("#run-search").on("click", function (event) {
 });
 
     //  .on("click") function associated with the clear button
-    // $("#clear-all").on("click", clear)
+    $("#clear-all").on("click", clear)
