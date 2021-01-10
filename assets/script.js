@@ -8,7 +8,7 @@ setPage();
 
 function setPage() {
 
-   
+    console.log("Inside set page");
     if (localStorage.getItem("xity") !== null) {
         var searchList = JSON.parse(localStorage.getItem('city'));
         for (i = 0; i < searchList.length; i++) {
@@ -22,10 +22,9 @@ function setPage() {
             console.log("City: ", searchList[i]);
         }
     }
-
 }
 
-$(".city").on("click", clearSearch)
+// $(".city").on("click", clearSearch)
 
 function buildQueryURL() {
 
@@ -134,13 +133,15 @@ function updatePage(WeatherData) {
 }
 
 function clear() {
+    console.log("Inside clear function");
+
     $("#current-weather").empty();
+    $("#five-day").empty();   
+  
 }
 
-
-$("#run-search").on("click", function (event) {
-
-    event.preventDefault();
+function citySearch() {
+    // $("#cityinfo").empty();
     clear();
 
     // Build the query URL for the ajax request to the NYT API
@@ -154,7 +155,7 @@ $("#run-search").on("click", function (event) {
         console.log("------------------------------------");
 
         city = WeatherData.name;
-        console.log("City: ", city, "(", today,);        
+        console.log("City: ", city, "(", today,);
        
         var lon = WeatherData.coord.lon;
         console.log("longitude: ", lon);
@@ -178,7 +179,8 @@ $("#run-search").on("click", function (event) {
             method: "GET"
         }).then(updatePage)
     });
-});
+}
 
     //  .on("click") function associated with the clear button
-    $("#clear-all").on("click", clearSearch)
+$("#run-search").on("click", citySearch);
+// $("#clear-all").on("click", clearSearch);
