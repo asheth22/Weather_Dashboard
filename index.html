@@ -20,7 +20,7 @@
     <div class="header">
         <h2>Weather Dashboard</h2>
     </div>
-    <div class="container">
+    <main class="container" id="weather-info">
         <div class="row">
             <div class="col-md-4 form-group">
                 <h4> Search for a City</h4>
@@ -32,12 +32,17 @@
                  <button type="button" id = "#clear-all" class="btn btn-info">Clear History
                 </button>
             </div>  
-            <div class="col-md-8" id="current-weather">
-                
-            </div>
-                    
+            <div class="col-md-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12" id="current-weather"></div>
+                    </div>
+                </div>
+                    <div class="row" id="five-day">                     
+                    </div>
+            </div>                    
         </div>
-    </div>
+    </main>
             
     <!-- References to script files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

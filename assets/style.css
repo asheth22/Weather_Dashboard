@@ -13,16 +13,29 @@
     color: white;
     font-weight: bolder;
   }
- .container {
-   margin-left: 0px;
- }
+
+  #weather-info {
+    padding: 0%;
+    margin-left: 5px;
+    margin-right: 0px;
+ }  
+
 .col-md-3 {
   justify-content: left;
   float: left;
  
 }
+.weather{
+
+  background-attachment: blue;
+}
+
 li {
   list-style-type: none;
 }
 
-  
+#uvi {
+  color: white;
+  font-size: smaller;
+  padding: 1px;
+}  
