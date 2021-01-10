@@ -23,23 +23,31 @@
     <main class="container" id="weather-info">
         <div class="row">
             <div class="col-md-4 form-group">
-                <h4> Search for a City</h4>
-                    <input type="search" class="city" id="search-term">                                 
-                <button type="button" class="btn btn-info" id="run-search">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-               </button>
-               <br>
-                 <button type="button" id = "#clear-all" class="btn btn-info">Clear History
-                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4> Search for a City</h4>
+                            <input type="search" class="city" id="search-term">                                 
+                        <button type="button" class="btn btn-info" id="run-search">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>    
+                <br>
+                    <button type="button" id = "clear-all" class="btn btn-info">Clear History
+                    </button>
+                </div>   
+                <div class="row"  ic="search-history">
+
+                </div>
             </div>  
             <div class="col-md-8">
-                <div class="container">
+                
                     <div class="row">
                         <div class="col-md-12" id="current-weather"></div>
                     </div>
-                </div>
+                
                     <div class="row" id="five-day">                     
                     </div>
+                  
             </div>                    
         </div>
     </main>

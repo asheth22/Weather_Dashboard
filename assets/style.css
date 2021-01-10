@@ -13,29 +13,51 @@
     color: white;
     font-weight: bolder;
   }
-
+  
   #weather-info {
     padding: 0%;
-    margin-left: 5px;
+    margin-left: 20px;
     margin-right: 0px;
+    width: 100%;
  }  
 
-.col-md-3 {
+.weather{
+  background-color: rgb(15, 115, 247);
+  color: white;
+  margin: 1px;
+  margin-bottom: 0px;
   justify-content: left;
   float: left;
- 
-}
-.weather{
-
-  background-attachment: blue;
 }
 
 li {
   list-style-type: none;
 }
 
-#uvi {
-  color: white;
+#uviy {
+  color:black;
+  background-color: yellow; 
   font-size: smaller;
   padding: 1px;
+  min-width: 5px;
 }  
+
+#uvig {
+  color: white;
+  background-color:green;
+  font-size: smaller;
+  padding: 1px;
+  min-width: 5px;
+}  
+
+#uvir {
+  color: white;
+  background-color: red;
+  font-size: smaller;
+  padding: 1px;
+  min-width: 5px;
+}  
+
+#clear-all {
+  margin-left: 20px;
+}

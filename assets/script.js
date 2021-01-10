@@ -1,7 +1,32 @@
 var now = dayjs();
 var today = now.format("MM/DD/YYYY");
 var city; 
+var searchHistory = []; 
 console.log("Today: ", today);
+
+setPage();
+
+function setPage() {
+
+   
+    if (localStorage.getItem("xity") !== null) {
+        var searchList = JSON.parse(localStorage.getItem('city'));
+        for (i = 0; i < searchList.length; i++) {
+            var $cityList = $("<ul>");
+            $cityList.addClass("list-group");  
+            $("#search-history").append($cityList);
+            var $cityListItem = $("<li>");
+            $cityListItem.addClass("cityL")
+            $(".list-group").append($cityListItem);
+            $cityListItem.append(searchList[i]); 
+            console.log("City: ", searchList[i]);
+        }
+    }
+
+}
+
+$(".city").on("click", clearSearch)
+
 function buildQueryURL() {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?";
@@ -57,16 +82,16 @@ function updatePage(WeatherData) {
     var uvColor;
     if (uvi < 3) {
         
-        $currentListItem.append("<h4> UV Index: " + "<span id='uvi' style=background-color:green;>" + uvi + "</span>" + "</h4>" + "<br>"); 
+        $currentListItem.append("<h4> UV Index: " + "<span id='uvig' style=background-color:green;>" + uvi + "</span>" + "</h4>" + "<br>"); 
         
         uvColor = "green";
     }
     else if (uvi > 7) {
-        $currentListItem.append("<h4> UV Index: " + "<span id='uvi style=background-color:red;>" + uvi + "</span>" + "</h4>" + "<br>"); 
+        $currentListItem.append("<h4> UV Index: " + "<span id='uvir' style=background-color:red;>" + uvi + "</span>" + "</h4>" + "<br>"); 
         uvColor = "red";
     }
     else {
-        $currentListItem.append("<h4> UV Index: " + "<span id='uvi style=background-color:yellow;>" + uvi + "</span>" + "</h4>" + "<br>"); 
+        $currentListItem.append("<h4> UV Index: " + "<span id='uviy' style=background-color:yellow;>" + uvi + "</span>" + "</h4>" + "<br>"); 
         uvColor = "yellow";
     }
     console.log("UV Indes: ", uvi, uvColor);
@@ -98,7 +123,7 @@ function updatePage(WeatherData) {
         temperature = (WeatherData.daily[i].temp.day - 273.15) * 1.80 + 32;
         temperature = temperature.toFixed(2) + '\xB0F';
         console.log("Temperature: ", temperature);
-        $forecastEl.append("<p> Temp: " + temperature + "</p>" + "<br>"); 
+        $forecastEl.append("<p> Temp: " + temperature + "</p>"); 
 
         humidity = WeatherData.daily[i].humidity + '%';
         console.log("Humidity: ", humidity);
@@ -109,8 +134,9 @@ function updatePage(WeatherData) {
 }
 
 function clear() {
-    $("#current-weathe").empty();
+    $("#current-weather").empty();
 }
+
 
 $("#run-search").on("click", function (event) {
 
@@ -155,4 +181,4 @@ $("#run-search").on("click", function (event) {
 });
 
     //  .on("click") function associated with the clear button
-    $("#clear-all").on("click", clear)
+    $("#clear-all").on("click", clearSearch)
