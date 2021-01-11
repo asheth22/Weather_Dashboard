@@ -1,6 +1,8 @@
+/* Setting background color for main page */
 body {
   background-color: rgb(245, 245, 245);
 }
+/* formatting hearder */
 .header {    
     background-color: #39393b;
     border-color:#39393b;       
@@ -10,15 +12,18 @@ body {
     border-radius: 0.25rem;
     
   }
+  /* formating header font */
   h2 {
     display: flex;
     justify-content: center;  
     color: white;
     font-weight: bolder;
   }
+  /* input field formatting */
   #search-term{
     max-width: 70%;
   }
+
   #weather-info {
     padding: 0%;
     margin-left: 20px;
@@ -45,12 +50,14 @@ li {
   display: flex;
   justify-content: left;
 }
+/* formating background and font color for uv index */
 #uviy {
   color:black;
   background-color: yellow; 
   font-size: smaller;
   padding: 1px;
-  min-width: 5px;
+  min-width: 10px;
+  height: 2px;
 }  
 
 #uvig {
@@ -58,7 +65,8 @@ li {
   background-color:green;
   font-size: smaller;
   padding: 1px;
-  min-width: 5px;
+  /* min-width: 5px;
+  height: 2px; */
 }  
 
 #uvir {
@@ -67,18 +75,14 @@ li {
   font-size: smaller;
   padding: 1px;
   min-width: 5px;
+  height: 2px;
 }  
 
 #clear-all {
   margin-left: 20px;
 }
 
-#search-history {
-
-  padding: 0px;
-  margin: 0px;
-
-}
+/* formating rows of cities in search history */
 .cityN {
   background-color: white;
 
@@ -87,17 +91,18 @@ li {
   margin: 5px;
   margin-left: 15px;
 }
-
+/* current weather container formatting  */
 #current-weather {
   background-color: white;
   font-size: smaller;
   margin-bottom: 1rem;
 }
-
+/* five day forecash container formatting */
 #five-day {
   background-color: white;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  
+  padding-left: 10px;
+  padding-top: 10px;;
+  /* padding-top: 2rem;
+  padding-bottom: 2rem;   */
 
 }

@@ -1,11 +1,14 @@
+// Declaring global variables
+
 var now = dayjs();
 var today = now.format("MM/DD/YYYY");
-var city; 
+var city = ""; 
 var searchList = []; 
 var lsIndex = 0;
 var lsFlag = true;
 console.log("Today: ", today);
 
+// The setPage function is used to initialize the page
 setPage();
 
 function setPage() {
@@ -22,7 +25,7 @@ function setPage() {
         console.log("Local Storage Index: ", lsIndex);
     }
 }
-
+// This function is used to get the weather data using city name ebtered by the user
 function buildQueryURL(cityname) {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?";
@@ -35,9 +38,10 @@ function buildQueryURL(cityname) {
    
     return queryURL + $.param(queryParams);
 }
+// Theis function updates the webpage with the Weather data for the selected city
 
 function updatePage(WeatherData) {
-
+    clear();
     console.log("Inside updatePage function");
     console.log(WeatherData);
 
@@ -72,21 +76,23 @@ function updatePage(WeatherData) {
 
     $(".list-group").append($currentListItem);
    
-    
+    // Setting background color and id for UV index depending on value
+
     if (uvi < 3) {
         
-        $currentListItem.append("<h6> UV Index: " + "<span id='uvig' style=background-color:green;>" + uvi + "</span>" + "</h6>" + "<br>"); 
+        $currentListItem.append("<h6> UV Index: " + "<span id='uvig'>" + uvi + "</span>" + "</h6>" + "<br>"); 
         
         uvColor = "green";
     }
     else if (uvi > 7) {
-        $currentListItem.append("<h6> UV Index: " + "<span id='uvir' style=background-color:red;>" + uvi + "</span>" + "</h6>" + "<br>"); 
+        $currentListItem.append("<h6> UV Index: " + "<span id='uvir'>" + uvi + "</span>" + "</h6>" + "<br>"); 
         uvColor = "red";
     }
     else {
-        $currentListItem.append("<h6> UV Index: " + "<span id='uviy' style=background-color:yellow;>" + uvi + "</span>" + "</h6>" + "<br>"); 
+        $currentListItem.append("<h6> UV Index: " + "<span id='uviy'>" + uvi+ "</span>" + "</h6>" + "<br>"); 
         uvColor = "yellow";
     }     
+    // adding 5 day forecast
 
     for (i = 1; i < 6; i++) {
 
@@ -115,6 +121,8 @@ function updatePage(WeatherData) {
         humidity = WeatherData.daily[i].humidity + '%';        
         $forecastEl.append("<p> Humidity " + humidity + "</p>" + "<br>");         
     }
+    // Add current city to local storage if it doesn't exist
+
         if (lsFlag) {
             if (localStorage.getItem("city") === null) {
                 searchList.push(city);
@@ -140,6 +148,8 @@ function updatePage(WeatherData) {
             })
     }
 }
+// This function clears the page of any old data
+
 function clear() {
     console.log("Inside clear function");
 
@@ -147,6 +157,8 @@ function clear() {
     $("#five-day").empty();   
   
 }
+// This function is triggered when the user clicks on serach button
+
 function citySearch(cityname) {
     clear(); 
     console.log("lsFlag: ", lsFlag);
@@ -200,23 +212,36 @@ function citySearch(cityname) {
         }).then(updatePage)
     });
 }
-   
+// Event listner for serach button.    
 $("#run-search").on("click", function () {
-    clear();
+    
     
     var cityname = $("#search-term")
         .val()
         .trim();
+    
+    if (cityname.toLowerCase() === city.toLowerCase()) {
+        console.log("city name not changed");
+        return;
+    }
+    else {
+        clear();
+    }
     citySearch(cityname);
+    
 
 });
+// Event listner for clear all button
+
 $("#clear-all").on("click", function () {
     console.log("inside local storage clear function");
     localStorage.clear();
     location.reload();
 });
+// Event listner for cities in search history
 
 $(".cityN").on("click", function (event) {
+    clear(); 
     event.preventDefault();    
     
     console.log(event.target);  
