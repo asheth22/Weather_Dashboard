@@ -12,15 +12,15 @@ function setPage() {
     if (localStorage.getItem("city") !== null) {
         searchList = JSON.parse(localStorage.getItem('city'));
         console.log("local storage: ", searchList);
-        var $cityList = $("<ul>");
-        $cityList.addClass("city-list");  
-        $("#search-history").append($cityList);
+        // var $cityList = $("<ul>");
+        // $cityList.addClass("city-list");  
+        // $("#search-history").append($cityList);
         for (i = 0; i < searchList.length; i++) {     
             console.log("Inside setpage for loop");
             var $cityListItem = $("<li>");
             $cityListItem.addClass("cityL")
-            $(".city-list").append($cityListItem);
-            $cityListItem.append("<h4>"+ searchList[i] + "</h4"); 
+            $("#search-history").append("<div class='row cityN'>"+ searchList[i] + "</div"); 
+            // $cityListItem.append("<div class='row cityN'>"+ searchList[i] + "</div"); 
             console.log("City: ", searchList[i]);
         }
     }
@@ -196,4 +196,9 @@ function citySearch() {
 
     //  .on("click") function associated with the clear button
 $("#run-search").on("click", citySearch);
-// $("#clear-all").on("click", clearSearch);
+$("#clear-all").on("click", function () {
+    console.log("inside local storage clear function");
+    localStorage.clear();
+    location.reload();
+});
+

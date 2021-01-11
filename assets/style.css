@@ -1,3 +1,6 @@
+body {
+  background-color: rgb(245, 245, 245);
+}
 .header {    
     background-color: #39393b;
     border-color:#39393b;       
@@ -13,7 +16,9 @@
     color: white;
     font-weight: bolder;
   }
-  
+  #search-term{
+    max-width: 70%;
+  }
   #weather-info {
     padding: 0%;
     margin-left: 20px;
@@ -72,4 +77,12 @@ li {
   padding: 0px;
   margin: 0px;
 
+}
+.cityN {
+  background-color: white;
+
+  font-size: largE;
+  padding: 5px;
+  margin: 5px;
+  margin-left: 15px;
 }
