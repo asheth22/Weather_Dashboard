@@ -215,7 +215,7 @@ $("#clear-all").on("click", function () {
     localStorage.clear();
     location.reload();
 });
-/
+
 $(".cityN").on("click", function (event) {
     event.preventDefault();    
     
