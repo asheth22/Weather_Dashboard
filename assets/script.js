@@ -130,6 +130,16 @@ function updatePage(WeatherData) {
                 localStorage.setItem("city", citystr);
             }    
             $("#search-history").append("<div class='row cityN'>" + city + "</div"); 
+            $(".cityN").on("click", function (event) {
+                console.log("Event Listner added");     
+                event.preventDefault();    
+    
+                console.log(event.target);  
+                console.log(event.target.innerHTML);
+    
+                var cityname = event.target.innerHTML;        
+                 citySearch(cityname);
+            })
     }
 }
 function clear() {
@@ -207,6 +217,17 @@ $("#clear-all").on("click", function () {
     localStorage.clear();
     location.reload();
 });
+// $(".cityN").on("click", function (event) {
+//     event.preventDefault();    
+    
+//     console.log(event.target);  
+//     console.log(event.target.innerHTML);
+    
+//     var cityname = event.target.innerHTML;    
+//     // console.log("Current city name: ", $("#search-term").val().trim());
+//     citySearch(cityname);
+    
+// }); 
 $(".cityN").on("click", function (event) {
     event.preventDefault();    
     
