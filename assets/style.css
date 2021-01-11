@@ -22,7 +22,7 @@ body {
   #weather-info {
     padding: 0%;
     margin-left: 20px;
-    margin-right: 0px;
+    /* margin-right: 0px; */
     width: 100%;
  }  
 
@@ -30,6 +30,7 @@ body {
   background-color: rgb(15, 115, 247);
   color: white;
   margin: 1px;
+  margin-left: 5px;
   margin-bottom: 0px;
   justify-content: left;
   float: left;
@@ -85,4 +86,18 @@ li {
   padding: 5px;
   margin: 5px;
   margin-left: 15px;
+}
+
+#current-weather {
+  background-color: white;
+  font-size: smaller;
+  margin-bottom: 1rem;
+}
+
+#five-day {
+  background-color: white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  
+
 }
