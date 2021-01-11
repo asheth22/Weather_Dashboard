@@ -6,7 +6,6 @@ var lsIndex = 0;
 var lsFlag = true;
 console.log("Today: ", today);
 
-
 setPage();
 
 function setPage() {
@@ -142,13 +141,25 @@ function clear() {
 }
 function citySearch(cityname) {
     clear(); 
-    
-    if (cityname === city) {
-        lsFlag = false; 
-    }
-    else {
-        lsFlag = true; 
-    }
+    console.log("lsFlag: ", lsFlag);
+
+    if (localStorage.getItem("city") !== null) {
+        searchList = JSON.parse(localStorage.getItem('city'));
+            
+        for (i = 0; i < searchList.length; i++) {
+            console.log("comparing: ", cityname, " and ", searchList[i]);           
+            if (cityname === searchList[i]) {
+                console.log("city name exists");
+                lsFlag = false;
+                break; 
+                
+            }
+            else {
+                console.log("city name doens't exists");
+                lsFlag = true;
+            }
+        }
+    }    
     var queryURL = buildQueryURL(cityname);
 
     $.ajax({
@@ -197,11 +208,12 @@ $("#clear-all").on("click", function () {
     location.reload();
 });
 $(".cityN").on("click", function (event) {
+    event.preventDefault();    
     
-    console.log(event.target);
+    console.log(event.target);  
     console.log(event.target.innerHTML);
-    var cityname = event.target.innerHTML;
     
+    var cityname = event.target.innerHTML;    
     // console.log("Current city name: ", $("#search-term").val().trim());
     citySearch(cityname);
     
