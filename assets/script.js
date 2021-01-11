@@ -23,8 +23,6 @@ function setPage() {
     }
 }
 
-// $(".city").on("click", clearSearch)
-
 function buildQueryURL(cityname) {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?";
@@ -217,17 +215,7 @@ $("#clear-all").on("click", function () {
     localStorage.clear();
     location.reload();
 });
-// $(".cityN").on("click", function (event) {
-//     event.preventDefault();    
-    
-//     console.log(event.target);  
-//     console.log(event.target.innerHTML);
-    
-//     var cityname = event.target.innerHTML;    
-//     // console.log("Current city name: ", $("#search-term").val().trim());
-//     citySearch(cityname);
-    
-// }); 
+/
 $(".cityN").on("click", function (event) {
     event.preventDefault();    
     
@@ -235,7 +223,7 @@ $(".cityN").on("click", function (event) {
     console.log(event.target.innerHTML);
     
     var cityname = event.target.innerHTML;    
-    // console.log("Current city name: ", $("#search-term").val().trim());
+    
     citySearch(cityname);
     
 }); 
