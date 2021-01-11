@@ -1,7 +1,7 @@
 var now = dayjs();
 var today = now.format("MM/DD/YYYY");
 var city; 
-var searchHistory = []; 
+var searchList = []; 
 console.log("Today: ", today);
 
 setPage();
@@ -9,16 +9,18 @@ setPage();
 function setPage() {
 
     console.log("Inside set page");
-    if (localStorage.getItem("xity") !== null) {
-        var searchList = JSON.parse(localStorage.getItem('city'));
-        for (i = 0; i < searchList.length; i++) {
-            var $cityList = $("<ul>");
-            $cityList.addClass("list-group");  
-            $("#search-history").append($cityList);
+    if (localStorage.getItem("city") !== null) {
+        searchList = JSON.parse(localStorage.getItem('city'));
+        console.log("local storage: ", searchList);
+        var $cityList = $("<ul>");
+        $cityList.addClass("city-list");  
+        $("#search-history").append($cityList);
+        for (i = 0; i < searchList.length; i++) {     
+            console.log("Inside setpage for loop");
             var $cityListItem = $("<li>");
             $cityListItem.addClass("cityL")
-            $(".list-group").append($cityListItem);
-            $cityListItem.append(searchList[i]); 
+            $(".city-list").append($cityListItem);
+            $cityListItem.append("<h4>"+ searchList[i] + "</h4"); 
             console.log("City: ", searchList[i]);
         }
     }
@@ -26,18 +28,16 @@ function setPage() {
 
 // $(".city").on("click", clearSearch)
 
-function buildQueryURL() {
+function buildQueryURL(cityname) {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?";
     var queryParams = { appid: "b0c91232e2976ef85bbb49769bd7a2b3" };
 
-    queryParams.q = $("#search-term")
-        .val()
-        .trim();
-
-    // Logging the URL so we have access to it for troubleshooting
+    queryParams.q = cityname;
+    
     console.log("---------------\nURL: " + queryURL + "\n---------------");
     console.log(queryURL + $.param(queryParams));
+   
     return queryURL + $.param(queryParams);
 }
 
@@ -71,7 +71,6 @@ function updatePage(WeatherData) {
     var $currentListItem = $("<li>");
     $(".list-group").append($currentListItem);
     $currentListItem.append("<h4> Wind Speed: " + speed + "</h4>" + "<br>"); 
-
 
     var uvi = WeatherData.current.uvi;
     var $currentListItem = $("<li>");
@@ -128,8 +127,19 @@ function updatePage(WeatherData) {
         console.log("Humidity: ", humidity);
         console.log("Clouds: ", WeatherData.daily[i].weather[0].description);
         $forecastEl.append("<p> Humidity " + humidity + "</p>" + "<br>"); 
+        
     }
-
+    if (localStorage.getItem("city") === null) {
+        searchList.push(city);
+        var citystr = JSON.stringify(searchList)
+        localStorage.setItem("city", citystr);
+    }
+    else {
+        var citystr = JSON.parse(localStorage.getItem("city"));                    
+        citystr.push(city);
+        citystr = JSON.stringify(citystr);
+        localStorage.setItem("city", citystr);
+    }
 }
 
 function clear() {
@@ -145,7 +155,10 @@ function citySearch() {
     clear();
 
     // Build the query URL for the ajax request to the NYT API
-    var queryURL = buildQueryURL();
+    var cityname = $("#search-term")
+    .val()
+    .trim();
+    var queryURL = buildQueryURL(cityname);
 
     $.ajax({
         url: queryURL,

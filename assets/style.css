@@ -34,6 +34,11 @@ li {
   list-style-type: none;
 }
 
+.cityL {
+
+  display: flex;
+  justify-content: left;
+}
 #uviy {
   color:black;
   background-color: yellow; 
@@ -60,4 +65,11 @@ li {
 
 #clear-all {
   margin-left: 20px;
+}
+
+#search-history {
+
+  padding: 0px;
+  margin: 0px;
+
 }
