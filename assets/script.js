@@ -20,9 +20,12 @@ function setPage() {
         for (i = 0; i < searchList.length; i++) {               
            
             $("#search-history").append("<div class='row cityN'>"+ searchList[i] + "</div");            
-            console.log("City: ", searchList[i]);        }
+            console.log("City: ", searchList[i]);
+            city = searchList[i];
+        }
         lsIndex = searchList.length; 
         console.log("Local Storage Index: ", lsIndex);
+        citySearch(city); 
     }
 }
 // This function is used to get the weather data using city name ebtered by the user
@@ -119,7 +122,7 @@ function updatePage(WeatherData) {
         
         $forecastEl.append("<p> Temp: " + temperature + "</p>"); 
         humidity = WeatherData.daily[i].humidity + '%';        
-        $forecastEl.append("<p> Humidity " + humidity + "</p>" + "<br>");         
+        $forecastEl.append("<p> Humidity " + humidity + "</p>");         
     }
     // Add current city to local storage if it doesn't exist
 
@@ -186,7 +189,10 @@ function citySearch(cityname) {
         url: queryURL,
         method: "GET"
     }).then(function (WeatherData) {
-        console.log(WeatherData);        
+        console.log(typeof WeatherData);   
+        if (typeof WeatherData !== 'object') {
+            alert("hello")
+        }
 
         city = WeatherData.name;
         // console.log("City: ", city, "(", today,);

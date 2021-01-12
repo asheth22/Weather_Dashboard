@@ -2,15 +2,14 @@
 body {
   background-color: rgb(245, 245, 245);
 }
+
 /* formatting hearder */
 .header {    
     background-color: #39393b;
-    border-color:#39393b;       
+    border-bottom:#0606f7 solid 5px;       
     padding: 1rem 1rem;
     margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-    
+   
   }
   /* formating header font */
   h2 {
@@ -25,18 +24,16 @@ body {
   }
 
   #weather-info {
-    padding: 0%;
+    margin-right: 20px;
+    padding-right: 20px;
     margin-left: 20px;
-    /* margin-right: 0px; */
-    width: 100%;
+
  }  
 
 .weather{
   background-color: rgb(15, 115, 247);
-  color: white;
-  margin: 1px;
-  margin-left: 5px;
-  margin-bottom: 0px;
+  padding-top: 5px;
+  color: white;  
   justify-content: left;
   float: left;
 }
@@ -55,25 +52,36 @@ li {
   color:black;
   background-color: yellow; 
   font-size: smaller;
-  padding: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   min-width: 10px;
   height: 2px;
+  
 }  
 
 #uvig {
   color: white;
   background-color:green;
   font-size: smaller;
-  padding: 1px;
-  /* min-width: 5px;
-  height: 2px; */
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  min-width: 10px;
+  height: 2px;
+  
 }  
 
 #uvir {
   color: white;
   background-color: red;
   font-size: smaller;
-  padding: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   min-width: 5px;
   height: 2px;
 }  
@@ -90,6 +98,7 @@ li {
   padding: 5px;
   margin: 5px;
   margin-left: 15px;
+  max-width: 90%;
 }
 /* current weather container formatting  */
 #current-weather {
@@ -102,7 +111,7 @@ li {
   background-color: white;
   padding-left: 10px;
   padding-top: 10px;;
-  /* padding-top: 2rem;
-  padding-bottom: 2rem;   */
-
+  display: flex;
+  justify-content: space-evenly;
+ 
 }
