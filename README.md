@@ -36,5 +36,5 @@ The following is demo of the application
 
 ## Application URL   
 
-* The URL of the deployed application is [Weather_Dashboard]( https://asheth22.github.io/Weather_Dashboard/)
+* The URL of the deployed application is [Weather_Dashboard](https://asheth22.github.io/Weather_Dashboard/)
 
