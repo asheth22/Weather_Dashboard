@@ -187,13 +187,17 @@ function citySearch(cityname) {
 
     $.ajax({
         url: queryURL,
-        method: "GET"
-    }).then(function (WeatherData) {
-        console.log(typeof WeatherData);   
-        if (typeof WeatherData !== 'object') {
-            alert("hello")
+        method: "GET",
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("Please enter valid city name");
+            console.log(xhr, ajaxOptions, thrownError);
+            
         }
-
+    }).then(function (WeatherData) {
+            console.log(typeof WeatherData);   
+            if (typeof WeatherData !== 'object') {
+                alert("hello")
+            }
         city = WeatherData.name;
         // console.log("City: ", city, "(", today,);
        
