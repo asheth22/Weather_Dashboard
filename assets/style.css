@@ -6,6 +6,7 @@ body {
 /* formatting hearder */
 .header {    
     background-color: #39393b;
+    background-image: url("Header-Background.png");
     border-bottom:#0606f7 solid 5px;       
     padding: 1rem 1rem;
     margin-bottom: 1rem;
@@ -15,8 +16,9 @@ body {
   h2 {
     display: flex;
     justify-content: center;  
-    color: white;
+    color: rgb(252, 248, 5);
     font-weight: bolder;
+    filter: brightness(200%);
   }
   /* input field formatting */
   #search-term{
