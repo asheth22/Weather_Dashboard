@@ -3,8 +3,6 @@ In this application, the user is presented with a webpage that allows the user t
 
 The application uses the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. 
 
-```
-
 ## Application Features
 
 > THe application has the ability to present following weather data for any city globally:
